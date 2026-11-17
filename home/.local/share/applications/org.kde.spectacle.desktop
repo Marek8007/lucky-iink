@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Name=Spectacle
+GenericName=Capturas de pantalla
+Comment=Seleccionar una región, copiar y editar la captura
+Exec=sh /home/marcos/.config/hypr/spectacle-launcher.sh
+TryExec=/usr/bin/spectacle
+Icon=spectacle
+Terminal=false
+DBusActivatable=false
+Categories=Qt;KDE;Utility;
+Keywords=screenshot;capture;recorte;captura;pantalla;
+Actions=Region;FullScreen;
+
+[Desktop Action Region]
+Name=Recortar un área
+Exec=sh /home/marcos/.config/hypr/spectacle-launcher.sh region
+
+[Desktop Action FullScreen]
+Name=Capturar todo el escritorio
+Exec=sh /home/marcos/.config/hypr/spectacle-launcher.sh full

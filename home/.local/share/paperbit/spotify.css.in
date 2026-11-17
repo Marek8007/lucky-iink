@@ -1,0 +1,14 @@
+
+/* Spotify: módulo retro compacto, iconos sólidos y una franja de rosa. */
+#spotify { margin: 3px 0; border: 1px solid @ink@; background: @paper@; }
+#custom-spotify { font-family: "Font Awesome 7 Brands"; font-size: 15px;
+    background: @pink@; color: @ink@; padding: 0 9px; border-right: 1px solid @ink@; }
+#mpris.previous, #mpris.play, #mpris.next {
+    font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 11px;
+    color: @muted@; padding: 0 7px; min-width: 12px; }
+#mpris.play { color: @ink@; background: @surface@; }
+#mpris.play.playing { background: @pink@; }
+#mpris.song { font-family: "JetBrainsMono Nerd Font", monospace; font-size: 11px;
+    color: @ink@; padding: 0 10px; margin-left: 2px; border-left: 1px solid @line@; }
+#mpris.song.paused { color: @muted@; }
+#custom-spotify:hover, #mpris:hover { background: @pink@; color: @ink@; }

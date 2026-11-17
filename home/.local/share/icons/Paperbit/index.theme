@@ -1,0 +1,33 @@
+[Icon Theme]
+Name=Paperbit
+Comment=Original monochrome pixel icons with a pink accent
+Inherits=breeze,hicolor
+Directories=16x16/places,16x16/apps,16x16/mimetypes,16x16/actions
+
+[16x16/places]
+Size=16
+Type=Scalable
+MinSize=16
+MaxSize=128
+Context=Places
+
+[16x16/apps]
+Size=16
+Type=Scalable
+MinSize=16
+MaxSize=128
+Context=Applications
+
+[16x16/mimetypes]
+Size=16
+Type=Scalable
+MinSize=16
+MaxSize=128
+Context=MimeTypes
+
+[16x16/actions]
+Size=16
+Type=Scalable
+MinSize=16
+MaxSize=128
+Context=Actions

@@ -1,0 +1,11 @@
+{
+  "source_home": "/home/marcos",
+  "created": "2026-11-17T15:30:01",
+  "distribution": "openSUSE Tumbleweed",
+  "hyprland": "0.57.2",
+  "monitors": [
+    "eDP-1",
+    "HDMI-A-1"
+  ],
+  "scale": 1
+}

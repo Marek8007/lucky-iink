@@ -1,0 +1,9 @@
+width=480
+height=380
+show=drun
+prompt=Buscar aplicaciones...
+allow_images=true
+image_size=24
+insensitive=true
+term=kitty
+key_exit=Escape

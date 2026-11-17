@@ -1,0 +1,17 @@
+{
+  "background": "#ffffff",
+  "placeholder_color": "#000000",
+  "size": 320,
+  "image_directory": "/home/marcos/Imágenes/lukii",
+  "rotation_seconds": 300,
+  "shuffle": true,
+  "allow_repeats": true,
+  "rain": {
+    "enabled": true,
+    "count": 90,
+    "fps": 30,
+    "min_speed": 35,
+    "max_speed": 95,
+    "sizes": [2, 3, 4]
+  }
+}

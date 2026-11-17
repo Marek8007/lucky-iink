@@ -1,0 +1,132 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 0,
+  "modules-left": [
+    "custom/apps",
+    "custom/terminal",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "group/spotify"
+  ],
+  "modules-right": [
+    "clock",
+    "pulseaudio",
+    "network",
+    "battery",
+    "tray",
+    "custom/session"
+  ],
+  "custom/apps": {
+    "format": "  MENU",
+    "tooltip": true,
+    "on-click": "sh /home/marcos/.config/hypr/app-menu.sh",
+    "tooltip-format": "Aplicaciones · Win / Win+D"
+  },
+  "custom/terminal": {
+    "format": "[ >_ ]",
+    "tooltip": true,
+    "on-click": "kitty",
+    "tooltip-format": "Terminal · Ctrl+Alt+T"
+  },
+  "custom/session": {
+    "format": "[ salir ]",
+    "tooltip": true,
+    "on-click": "sh /home/marcos/.config/hypr/session-menu.sh",
+    "tooltip-format": "Bloquear / cerrar sesión / apagar"
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{name}"
+  },
+  "clock": {
+    "format": "{:%d.%m  /  %H:%M:%S}",
+    "interval": 1,
+    "tooltip-format": "{:%A, %d de %B de %Y}"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "VOL --",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "format-wifi": "NET {signalStrength}%",
+    "format-ethernet": "NET LAN",
+    "format-disconnected": "NET --",
+    "tooltip-format": "{ifname} · {essid}\n{ipaddr}\nClic: conexiones",
+    "on-click": "kitty --title 'Red y Wi-Fi' nmtui"
+  },
+  "battery": {
+    "format": "BAT {capacity}%",
+    "format-charging": "BAT +{capacity}%",
+    "states": {
+      "warning": 25,
+      "critical": 10
+    }
+  },
+  "tray": {
+    "spacing": 8,
+    "icon-size": 16
+  },
+  "margin": "8 12 0 12",
+  "group/spotify": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/spotify",
+      "mpris#previous",
+      "mpris#play",
+      "mpris#next",
+      "mpris#song"
+    ]
+  },
+  "custom/spotify": {
+    "format": "",
+    "tooltip-format": "Abrir Spotify",
+    "on-click": "gtk-launch com.spotify.Client"
+  },
+  "mpris#previous": {
+    "player": "spotify",
+    "tooltip": true,
+    "hide-on-paused": false,
+    "format": "",
+    "tooltip-format": "Canción anterior",
+    "on-click": "gdbus call --session --dest org.mpris.MediaPlayer2.spotify --object-path /org/mpris/MediaPlayer2 --method org.mpris.MediaPlayer2.Player.Previous"
+  },
+  "mpris#play": {
+    "player": "spotify",
+    "tooltip": true,
+    "hide-on-paused": false,
+    "format": "{status_icon}",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": ""
+    },
+    "tooltip-format": "Reproducir / pausar"
+  },
+  "mpris#next": {
+    "player": "spotify",
+    "tooltip": true,
+    "hide-on-paused": false,
+    "format": "",
+    "tooltip-format": "Canción siguiente",
+    "on-click": "gdbus call --session --dest org.mpris.MediaPlayer2.spotify --object-path /org/mpris/MediaPlayer2 --method org.mpris.MediaPlayer2.Player.Next"
+  },
+  "mpris#song": {
+    "player": "spotify",
+    "tooltip": true,
+    "hide-on-paused": false,
+    "format": "{dynamic}",
+    "dynamic-order": [
+      "title",
+      "artist"
+    ],
+    "dynamic-len": 28,
+    "title-len": 28,
+    "artist-len": 16,
+    "max-length": 28,
+    "tooltip-format": "{title}\n{artist}\n{album}\nClic: reproducir/pausar · derecho: siguiente"
+  }
+}

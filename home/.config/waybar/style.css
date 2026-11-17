@@ -1,0 +1,39 @@
+/* Paperbit: panel compacto, controles existentes, tipografía de píxel. */
+* { font-family: "Classic Console", "JetBrainsMono Nerd Font", monospace;
+    font-size: 16px; font-weight: normal; border-radius: 0; min-height: 0;
+    text-shadow: none; }
+window#waybar { background: #ffffff; color: #171717; border: 2px solid #171717; }
+tooltip { background: #ffffff; border: 2px solid #171717; border-radius: 0; }
+tooltip label { color: #171717; font-family: "JetBrainsMono Nerd Font"; font-size: 12px; }
+#custom-apps { padding: 0 12px 0 26px; border-right: 2px solid #171717;
+    background: #efc7d1; background-image: url("/home/marcos/.local/share/icons/Paperbit/16x16/actions/paperbit-heart.svg");
+    background-repeat: no-repeat; background-position: 8px center; background-size: 16px 16px; }
+#custom-terminal { padding: 0 10px; border-right: 1px solid #b8b8b8; }
+#workspaces { padding: 3px 6px; }
+#workspaces button { padding: 0 8px; margin: 0 2px; color: #626262; background: #ffffff;
+    border: 1px solid transparent; box-shadow: none; }
+#workspaces button.active { color: #ffffff; background: #171717; border-color: #171717; }
+#workspaces button.urgent { color: #171717; background: #efc7d1; border-color: #171717; }
+#workspaces button:hover { color: #171717; background: #efc7d1; border-color: #171717; }
+#clock { color: #171717; padding: 0 14px; }
+#pulseaudio, #network, #battery, #tray { padding: 0 10px; border-left: 1px dotted #b8b8b8; }
+#custom-session { padding: 0 10px; margin-left: 4px; border-left: 2px solid #171717; }
+#custom-terminal:hover, #custom-session:hover, #network:hover, #pulseaudio:hover { background: #efc7d1; }
+#battery.warning { background: #efc7d1; color: #171717; }
+#battery.critical { background: #171717; color: #ffffff; }
+#network.disconnected, #pulseaudio.muted { color: #626262; }
+
+
+/* Spotify: módulo retro compacto, iconos sólidos y una franja de rosa. */
+#spotify { margin: 3px 0; border: 1px solid #171717; background: #ffffff; }
+#custom-spotify { font-family: "Font Awesome 7 Brands"; font-size: 15px;
+    background: #efc7d1; color: #171717; padding: 0 9px; border-right: 1px solid #171717; }
+#mpris.previous, #mpris.play, #mpris.next {
+    font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 11px;
+    color: #626262; padding: 0 7px; min-width: 12px; }
+#mpris.play { color: #171717; background: #f2f2f2; }
+#mpris.play.playing { background: #efc7d1; }
+#mpris.song { font-family: "JetBrainsMono Nerd Font", monospace; font-size: 11px;
+    color: #171717; padding: 0 10px; margin-left: 2px; border-left: 1px solid #b8b8b8; }
+#mpris.song.paused { color: #626262; }
+#custom-spotify:hover, #mpris:hover { background: #efc7d1; color: #171717; }
