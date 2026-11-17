@@ -9,6 +9,10 @@ se mantienen en `home/`; el instalador crea enlaces desde sus rutas habituales.
 - Dos pantallas Full HD al 100 %, con HDMI encima del portátil.
 - Waybar con Spotify, reproducción/anterior/siguiente, reloj con segundos, red,
   volumen, batería, bandeja y menú de sesión.
+  Al pulsar la fecha abre un calendario desplegable bajo la barra. Se cierra
+  con Esc, pulsando fuera o repitiendo el clic; incluye navegación por meses y Hoy.
+  Las semanas empiezan en lunes: lunes–jueves blancos, viernes rosa claro y
+  sábado–domingo rosa intenso. El día seleccionado se distingue con un borde negro.
 - Paneles fijos detrás de las aplicaciones y visibles en todos los escritorios:
   Fastfetch, btop con procesos por memoria y actualización a 500 ms, visualizador
   CAVA del audio real de Spotify y tiempo de Valencia con ASCII de colores.

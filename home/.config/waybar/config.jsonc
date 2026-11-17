@@ -44,6 +44,7 @@
   "clock": {
     "format": "{:%d.%m  /  %H:%M:%S}",
     "interval": 1,
+    "on-click": "python3 /home/marcos/.local/share/paperbit/calendar_popup.py",
     "tooltip-format": "{:%A, %d de %B de %Y}"
   },
   "pulseaudio": {

@@ -97,6 +97,7 @@ bar['custom/apps'].update(format='  MENU', tooltip=True, **{'tooltip-format':'Ap
 bar['custom/terminal'].update(format='[ >_ ]', tooltip=True, **{'tooltip-format':'Terminal · Ctrl+Alt+T'})
 bar['custom/session'].update(format='[ salir ]', tooltip=True, **{'tooltip-format':'Bloquear / cerrar sesión / apagar'})
 bar['clock'].update(format='{:%d.%m  /  %H:%M:%S}', interval=1)
+bar['clock']['on-click']='python3 /home/marcos/.local/share/paperbit/calendar_popup.py'
 bar['network'].update({'format-wifi':'NET {signalStrength}%', 'format-ethernet':'NET LAN',
     'format-disconnected':'NET --', 'tooltip-format':'{ifname} · {essid}\n{ipaddr}\nClic: conexiones'})
 bar['pulseaudio'].update({'format':'VOL {volume}%', 'format-muted':'VOL --'})
