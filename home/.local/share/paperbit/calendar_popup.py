@@ -19,6 +19,7 @@ except locale.Error:pass
 gi.require_version('Gtk','3.0')
 from gi.repository import Gtk,Gdk,GLib
 from calendar_grid import MonthGrid
+from theme_support import tint_bytes
 
 runtime=Path(os.environ['XDG_RUNTIME_DIR'])
 lock=open(runtime/'paperbit-calendar.lock','a+')
@@ -78,7 +79,7 @@ zone(ptr(window),-1);keyboard(ptr(window),1)
 for edge in range(4):anchor(ptr(window),edge,True)
 
 css=Gtk.CssProvider()
-css.load_from_data(b'''
+css.load_from_data(tint_bytes(b'''
 window.paperbit-calendar-overlay { background: transparent; border: none; }
 .paperbit-calendar-backdrop { background: transparent; }
 .paperbit-calendar-card { background: #ffffff; color: #171717; border: 2px solid #171717;
@@ -107,7 +108,7 @@ window.paperbit-calendar-overlay { background: transparent; border: none; }
 .paperbit-calendar-card button.calendar-day.selected-day { border-color: #171717; }
 .paperbit-calendar-card button.calendar-day.today label { font-weight: bold; }
 .paperbit-calendar-card button.calendar-day.other-month label { opacity: 0.4; }
-''')
+'''))
 Gtk.StyleContext.add_provider_for_screen(window.get_screen(),css,Gtk.STYLE_PROVIDER_PRIORITY_USER+50)
 
 fixed=Gtk.Fixed()

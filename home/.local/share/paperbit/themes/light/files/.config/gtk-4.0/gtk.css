@@ -1,0 +1,37 @@
+@import 'colors.css';
+/* Paperbit: square controls; retain toolkit layouts and focus behavior. */
+window, dialog { background-color: #ffffff; color: #171717; }
+headerbar, toolbar { background-image: none; background-color: #f2f2f2; color: #171717;
+    border-radius: 0; border-bottom: 1px solid #171717; box-shadow: none; }
+button, entry, searchentry, spinbutton, combobox, popover, menu, menuitem, notebook, tab {
+    border-radius: 0; }
+button { background-image: none; background-color: #f2f2f2; color: #171717; border-color: #b8b8b8; box-shadow: none; }
+button:hover, button:checked, button.suggested-action { background-image: none; background-color: #efc7d1; color: #171717; border-color: #171717; }
+entry, searchentry, textview, treeview, list, listview { background-color: #ffffff; color: #171717; }
+entry:focus, searchentry:focus { border-color: #884258; }
+selection, row:selected, treeview:selected, flowboxchild:selected { background-color: #efc7d1; color: #171717; }
+scrollbar slider { border-radius: 0; background-color: #b8b8b8; min-width: 6px; min-height: 6px; }
+progressbar progress, scale highlight { background-image: none; background-color: #884258; border-radius: 0; }
+tooltip { background-color: #171717; color: #ffffff; border-radius: 0; }
+tooltip label { color: #ffffff; }
+
+:root {
+  --accent-bg-color: #efc7d1;
+  --accent-fg-color: #171717;
+  --accent-color: #884258;
+  --window-bg-color: #ffffff;
+  --window-fg-color: #171717;
+  --view-bg-color: #ffffff;
+  --view-fg-color: #171717;
+  --headerbar-bg-color: #f2f2f2;
+  --headerbar-fg-color: #171717;
+  --headerbar-border-color: #171717;
+  --card-bg-color: #ffffff;
+  --card-fg-color: #171717;
+  --dialog-bg-color: #ffffff;
+  --dialog-fg-color: #171717;
+  --popover-bg-color: #ffffff;
+  --popover-fg-color: #171717;
+  --sidebar-bg-color: #f2f2f2;
+  --sidebar-fg-color: #171717;
+}

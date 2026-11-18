@@ -14,6 +14,8 @@ gi.require_version('Vte','2.91')
 from gi.repository import Gtk,Gdk,GdkPixbuf,GLib,Pango,Vte
 from spotify_audio import SpotifyAudio
 from weather_widget import WeatherService,Weather
+from theme_support import resolve_color,tint_bytes,rgb,image_theme
+from monitor_layout import MonitorLayouts
 
 ROOT=Path('/home/marcos/.local/share/paperbit')
 lock=open(Path(os.environ['XDG_RUNTIME_DIR'])/'paperbit-desktop-widgets.lock','w')
@@ -34,10 +36,10 @@ zone=api('set_exclusive_zone',[C.c_void_p,C.c_int])
 keyboard=api('set_keyboard_mode',[C.c_void_p,C.c_int])
 namespace=api('set_namespace',[C.c_void_p,C.c_char_p])
 def color(hex):
-    c=Gdk.RGBA();c.parse(hex);return c
+    c=Gdk.RGBA();c.parse(resolve_color(hex));return c
 
 css=Gtk.CssProvider()
-css.load_from_data(b'''
+css.load_from_data(tint_bytes(b'''
 window.paperbit-panel { background: #ffffff; color: #171717; border: 2px solid #171717; }
 .paperbit-weather label { font-family: "JetBrainsMono Nerd Font", monospace; font-size: 10px; }
 .paperbit-weather .paperbit-heading { font-family: "Classic Console"; font-size: 14px; }
@@ -46,7 +48,7 @@ window.paperbit-panel { background: #ffffff; color: #171717; border: 2px solid #
  padding: 5px 10px; color: #171717; background: #f2f2f2; border-bottom: 1px solid #171717; }
 .paperbit-title { font-family: "JetBrainsMono Nerd Font"; font-size: 12px; font-weight: bold; color: #171717; }
 .paperbit-artist { font-family: "JetBrainsMono Nerd Font"; font-size: 10px; color: #626262; }
-''')
+'''))
 Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),css,Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION+20)
 audio=SpotifyAudio()
 weather=WeatherService()
@@ -86,17 +88,28 @@ def terminal(box,args,font,on_exit=None):
     term.set_margin_start(10);term.set_margin_end(10)
     term.set_margin_top(10);term.set_margin_bottom(8)
     box.pack_start(term,True,True,0)
+    term._closed=False
+    term._spawn_source=None
     def spawned(t,pid,error,*unused):
         if error: print('Terminal spawn error:',error,flush=True)
         elif pid>0:
+            if t._closed:
+                try: os.kill(pid,signal.SIGTERM)
+                except ProcessLookupError: pass
+                return
             children.add(pid)
             t._child_pid=pid
     def exited(t,status):
         children.discard(getattr(t,'_child_pid',None))
         t._child_pid=None
+        if t._closed: return
         t.feed(b'\x1b[?25l')
         if on_exit: GLib.idle_add(on_exit,t)
     def destroyed(t):
+        t._closed=True
+        if t._spawn_source is not None:
+            GLib.source_remove(t._spawn_source)
+            t._spawn_source=None
         pid=getattr(t,'_child_pid',None)
         if pid in children:
             try: os.kill(pid,signal.SIGTERM)
@@ -105,11 +118,13 @@ def terminal(box,args,font,on_exit=None):
     term.connect('child-exited',exited)
     term.connect('destroy',destroyed)
     def spawn():
+        term._spawn_source=None
+        if term._closed: return False
         term.spawn_async(pty_flags=Vte.PtyFlags.DEFAULT,working_directory=str(ROOT),argv=args,
             envv=['TERM=xterm-256color'],spawn_flags=GLib.SpawnFlags.DEFAULT,child_setup=None,
             timeout=-1,cancellable=None,callback=spawned,user_data=None)
         return False
-    GLib.timeout_add(300,spawn)
+    term._spawn_source=GLib.timeout_add(300,spawn)
     return term
 
 class Music(Gtk.Box):
@@ -137,11 +152,11 @@ class Music(Gtk.Box):
         for i,level in enumerate(audio.levels):
             blocks=max(1,int((level/255)*max_h/5))
             for block in range(blocks):
-                cr.set_source_rgb(*((0.937,0.780,0.820) if block==blocks-1 else (0.09,0.09,0.09)))
+                cr.set_source_rgb(*(rgb('#efc7d1') if block==blocks-1 else rgb('#171717')))
                 cr.rectangle(int(i*step),max_h-block*5,max(2,int(step)-3),3);cr.fill()
-        cr.set_source_rgb(0.85,0.85,0.85);cr.rectangle(0,height-8,width,2);cr.fill()
+        cr.set_source_rgb(*rgb('#b8b8b8'));cr.rectangle(0,height-8,width,2);cr.fill()
         if audio.status!='Stopped':
-            cr.set_source_rgb(0.53,0.26,0.35)
+            cr.set_source_rgb(*rgb('#884258'))
             cr.rectangle(0,height-8,width*min(1,audio.position/audio.duration),2);cr.fill()
 
 screens={}
@@ -179,6 +194,9 @@ def add_monitor(display,screen):
         factor=min((side-32)/pixbuf.get_width(),target_h/pixbuf.get_height())
         interpolation=GdkPixbuf.InterpType.NEAREST if fetch_settings.get('pixel_art') else GdkPixbuf.InterpType.BILINEAR
         pixbuf=pixbuf.scale_simple(max(1,int(pixbuf.get_width()*factor)),max(1,int(pixbuf.get_height()*factor)),interpolation)
+        # Managed icons already have the selected palette; user art is converted in memory.
+        if not image_path.is_relative_to(Path.home()/'.local/share/icons/Paperbit'):
+            pixbuf=image_theme(pixbuf)
         image=Gtk.Image.new_from_pixbuf(pixbuf)
         image.set_margin_top(12)
         box.pack_start(image,False,False,0)
@@ -189,6 +207,7 @@ def add_monitor(display,screen):
     weather_box.pack_start(Weather(weather),True,True,0)
     weather_window.show_all()
     def fit_fetch(term):
+        if term._closed: return False
         text=(term.get_text_format(Vte.Format.TEXT) or '').rstrip()
         # Leave the final cursor row so VTE does not scroll away the first line.
         rows=max(1,len(text.splitlines()))+1
@@ -222,18 +241,20 @@ def add_monitor(display,screen):
     print(f'Widgets: {screen.get_model()} {w}x{h}, ancho {side}',flush=True)
 
 def remove_monitor(display,screen):
-    for win in screens.pop(screen,[]): win.destroy()
+    for win in screens.pop(screen,[]):
+        panels.remove(win)
+        win.destroy()
 
 def shutdown(*unused):
+    layouts.close()
     audio.close()
-    for pid in children:
+    for pid in list(children):
         try: os.kill(pid,signal.SIGTERM)
         except ProcessLookupError: pass
     Gtk.main_quit();return False
 
 display=Gdk.Display.get_default()
-for i in range(display.get_n_monitors()): add_monitor(display,display.get_monitor(i))
-display.connect('monitor-added',add_monitor);display.connect('monitor-removed',remove_monitor)
+layouts=MonitorLayouts(display,add_monitor,remove_monitor)
 GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGTERM,shutdown)
 GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,shutdown)
 Gtk.main()

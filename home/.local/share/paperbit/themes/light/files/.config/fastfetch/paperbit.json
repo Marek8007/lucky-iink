@@ -1,0 +1,27 @@
+{
+  "logo": { "type": "none" },
+  "display": {
+    "pipe": false,
+    "color": { "keys": "38;2;163;79;112", "title": "38;2;136;66;88" },
+    "separator": " : "
+  },
+  "modules": [
+    "title",
+    "separator",
+    { "type": "os", "key": "Sistema", "format": "{pretty-name} {arch}" },
+    { "type": "host", "key": "Equipo", "format": "{family} {name}" },
+    { "type": "kernel", "key": "Kernel" },
+    { "type": "uptime", "key": "Encendido" },
+    { "type": "packages", "key": "Paquetes", "format": "{all} instalados" },
+    { "type": "custom", "key": "Shell", "format": "zsh" },
+    { "type": "wm", "key": "Escritorio" },
+    { "type": "cpu", "key": "CPU", "format": "{name}" },
+    { "type": "cpu", "key": "Nucleos", "format": "{cores-physical} fisicos / {cores-logical} hilos" },
+    { "type": "gpu", "key": "GPU", "format": "{name}" },
+    { "type": "memory", "key": "RAM", "format": "{used} / {total} ({percentage})" },
+    { "type": "swap", "key": "Swap" },
+    { "type": "disk", "key": "Disco /", "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery", "key": "Bateria" },
+    { "type": "display", "key": "Pantalla {name}", "format": "{width}x{height} @ {refresh-rate} Hz" }
+  ]
+}

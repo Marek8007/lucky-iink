@@ -1,0 +1,21 @@
+font=JetBrainsMono Nerd Font 10
+background-color=#ffffff
+text-color=#171717
+border-color=#171717
+border-size=2
+border-radius=0
+width=340
+height=150
+padding=14
+margin=12
+anchor=top-right
+default-timeout=6000
+max-visible=4
+icons=1
+icon-path=/home/marcos/.local/share/icons/Paperbit/16x16/apps
+max-icon-size=32
+progress-color=over #efc7d1
+
+[urgency=critical]
+background-color=#efc7d1
+default-timeout=0

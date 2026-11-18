@@ -265,7 +265,7 @@ label {
     halign = center
     valign = center
 }
-''').replace('PAPER',P['paper'][1:]).replace('INK',P['ink'][1:]).replace('PINK',P['pink'][1:]).replace('ROSE',P['rose'][1:]))
+''').replace('PAPER',P['paper'][1:]).replace('PINK',P['pink'][1:]).replace('INK',P['ink'][1:]).replace('ROSE',P['rose'][1:]))
 
 toolkit = {'background':'paper','base':'surface','text':'ink','alternate_base':'pink',
            'bright_text':'ink','accent':'rose','accent_secondary':'ink'}

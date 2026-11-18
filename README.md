@@ -16,6 +16,8 @@ se mantienen en `home/`; el instalador crea enlaces desde sus rutas habituales.
 - Paneles fijos detrás de las aplicaciones y visibles en todos los escritorios:
   Fastfetch, btop con procesos por memoria y actualización a 500 ms, visualizador
   CAVA del audio real de Spotify y tiempo de Valencia con ASCII de colores.
+  Esperan a que cada monitor comunique sus dimensiones y se recolocan al cambiar
+  la resolución, la escala o al volver a conectar una pantalla.
 - Ilustraciones centradas, cambio con clic y selección aleatoria cada cinco
   minutos, con repeticiones permitidas. Lluvia de píxeles negros en el fondo.
 - Kitty a 12 puntos, Wofi, Mako, Hyprlock, tema GTK/Qt y pequeños iconos propios.
@@ -33,6 +35,7 @@ se mantienen en `home/`; el instalador crea enlaces desde sus rutas habituales.
 | Campos de Fastfetch | `.config/fastfetch/paperbit.json` |
 | Imagen del fetch | `.local/share/paperbit/fetch.json` |
 | Tamaños y posición de paneles | `.local/share/paperbit/desktop_widgets.py` |
+| Inicialización y cambios de monitor | `.local/share/paperbit/monitor_layout.py` |
 | Ciudad del tiempo | `.local/share/paperbit/weather.json` |
 | Imágenes, intervalo y lluvia | `.local/share/paperbit/wallpaper.json` |
 | Btop del escritorio y sus colores | `.local/share/paperbit/widgets/` |
@@ -81,6 +84,29 @@ Después, entrar en Hyprland o recargar los componentes. El funcionamiento actua
 se ha comprobado en el equipo original con dos pantallas 1920 × 1080.
 
 ## Cambiar y recargar
+
+### Claro y oscuro
+
+Pulsa **[ tema ]** en la barra o **Win+Alt+T** para alternar sin cerrar sesión.
+El modo elegido se conserva al reiniciar. También puedes elegirlo explícitamente:
+
+```sh
+python3 ~/.local/share/paperbit/theme_switch.py light
+python3 ~/.local/share/paperbit/theme_switch.py dark
+```
+
+La variante oscura invierte papel/tinta y adapta los grises y rosas para mantener
+el contraste. Incluye paneles, calendario, lluvia, barra, menús, GTK/Qt, notificaciones
+y bloqueo. Kitty conserva su fondo oscuro en ambos modos para respetar los colores
+propios de las aplicaciones TUI. Las aplicaciones abiertas con temas internos
+pueden necesitar reabrirse o seleccionar su opción de seguir el tema del sistema.
+
+Las ilustraciones invierten solo sus tonos neutros en memoria; los rosas se
+mantienen y los originales no se modifican. El perfil claro se guarda en
+`home/.local/share/paperbit/themes/light/files/`; el oscuro se deriva mediante
+`theme_support.py`. Para personalizaciones que sobrevivan a la alternancia, editar
+el perfil claro o el mapa de colores oscuro, y aplicar el modo de nuevo. Los atajos,
+monitores, tamaños y controles se conservan. `theme.json` contiene la elección actual.
 
 Los enlaces permiten editar tanto el archivo de `~/.config/` como el de `home/`:
 ambos apuntan al mismo contenido del repositorio.

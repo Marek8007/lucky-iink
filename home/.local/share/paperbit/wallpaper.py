@@ -12,6 +12,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 from pixel_rain import PixelRain
+from theme_support import image_theme
 
 lock = open(Path(os.environ['XDG_RUNTIME_DIR']) / 'paperbit-wallpaper.lock', 'w')
 try:
@@ -89,7 +90,7 @@ def available_images():
 
 def load_image(path):
     size=max(16,min(1600,int(config['size'])))
-    return GdkPixbuf.Pixbuf.new_from_file_at_scale(str(path),size,size,True).apply_embedded_orientation()
+    return image_theme(GdkPixbuf.Pixbuf.new_from_file_at_scale(str(path),size,size,True).apply_embedded_orientation())
 
 def render():
     size=max(16,min(1600,int(config['size'])))

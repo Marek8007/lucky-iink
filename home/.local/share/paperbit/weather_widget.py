@@ -10,6 +10,11 @@ import urllib.request
 import gi
 gi.require_version('Gtk','3.0')
 from gi.repository import Gtk,GLib
+from theme_support import tint
+
+class WeatherLabel(Gtk.Label):
+    def set_markup(self,markup):
+        super().set_markup(tint(markup))
 
 ROOT=Path('/home/marcos/.local/share/paperbit')
 CACHE=Path('/home/marcos/.local/state/paperbit/weather-cache.json')
@@ -90,14 +95,14 @@ class Weather(Gtk.Box):
         self.set_margin_start(12);self.set_margin_end(12)
         self.set_margin_top(6);self.set_margin_bottom(5)
         row=Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
-        self.art=Gtk.Label(xalign=0)
+        self.art=WeatherLabel(xalign=0)
         self.art.get_style_context().add_class('weather-ascii')
         row.pack_start(self.art,False,False,0)
         info=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=1)
-        self.summary=Gtk.Label(xalign=0)
-        self.details=Gtk.Label(xalign=0)
-        self.range=Gtk.Label(xalign=0)
-        self.source=Gtk.Label(xalign=1)
+        self.summary=WeatherLabel(xalign=0)
+        self.details=WeatherLabel(xalign=0)
+        self.range=WeatherLabel(xalign=0)
+        self.source=WeatherLabel(xalign=1)
         for label in (self.summary,self.details,self.range):
             label.set_ellipsize(3)
             info.pack_start(label,False,False,0)

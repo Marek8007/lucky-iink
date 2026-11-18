@@ -12,6 +12,10 @@
     "fps": 30,
     "min_speed": 35,
     "max_speed": 95,
-    "sizes": [2, 3, 4]
+    "sizes": [
+      2,
+      3,
+      4
+    ]
   }
 }

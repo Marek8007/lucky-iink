@@ -1,6 +1,7 @@
 """Small, randomly falling squares, painted as part of the background only."""
 import random
 from gi.repository import Gtk
+from theme_support import rgb
 
 class PixelRain(Gtk.DrawingArea):
     def __init__(self,settings):
@@ -53,7 +54,7 @@ class PixelRain(Gtk.DrawingArea):
 
     def draw(self,widget,cr):
         if not self.settings.get('enabled',True):return False
-        cr.set_source_rgb(0,0,0)
+        cr.set_source_rgb(*rgb('#000000'))
         for x,y,speed,size in self.particles:
             # Whole-pixel coordinates keep the retro edges sharp.
             cr.rectangle(int(x),int(y),size,size)

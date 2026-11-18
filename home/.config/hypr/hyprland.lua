@@ -44,6 +44,7 @@ hl.bind("SUPER + Super_L", hl.dsp.exec_cmd(appMenu), { release = true, dont_inhi
 hl.bind("Escape", hl.dsp.exec_cmd(appMenu .. " close"), { non_consuming = true, dont_inhibit = true })
 run("SUPER + E", "dolphin")
 run("SUPER + N", "kitty --title 'Red y Wi-Fi' nmtui")
+run("SUPER + ALT + T", "setsid --fork python3 /home/marcos/.local/share/paperbit/theme_switch.py toggle")
 run("SUPER + L", "hyprlock")
 run("SUPER + SHIFT + R", "hyprctl reload")
 run("SUPER + SHIFT + E", "hyprctl dispatch 'hl.dsp.exit()'")

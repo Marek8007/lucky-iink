@@ -12,6 +12,7 @@
     "group/spotify"
   ],
   "modules-right": [
+    "custom/theme",
     "clock",
     "pulseaudio",
     "network",
@@ -24,6 +25,11 @@
     "tooltip": true,
     "on-click": "sh /home/marcos/.config/hypr/app-menu.sh",
     "tooltip-format": "Aplicaciones · Win / Win+D"
+  },
+  "custom/theme": {
+    "format": "[ tema ]",
+    "tooltip-format": "Alternar claro / oscuro · Win+Alt+T",
+    "on-click": "setsid --fork python3 /home/marcos/.local/share/paperbit/theme_switch.py toggle"
   },
   "custom/terminal": {
     "format": "[ >_ ]",
