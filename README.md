@@ -13,6 +13,10 @@ se mantienen en `home/`; el instalador crea enlaces desde sus rutas habituales.
   con Esc, pulsando fuera o repitiendo el clic; incluye navegación por meses y Hoy.
   Las semanas empiezan en lunes: lunes–jueves blancos, viernes rosa claro y
   sábado–domingo rosa intenso. El día seleccionado se distingue con un borde negro.
+- Portapapeles junto al reloj. Un clic abre el historial de textos e imágenes.
+  Pulsa una entrada para copiarla de nuevo y la estrella para guardarla en Favoritos.
+  Se guardan hasta 50 entradas recientes, además de los favoritos, en
+  `~/.local/state/paperbit/clipboard/` (o en `$XDG_STATE_HOME`).
 - Paneles fijos detrás de las aplicaciones y visibles en todos los escritorios:
   Fastfetch, btop con procesos por memoria y actualización a 500 ms, visualizador
   CAVA del audio real de Spotify y tiempo de Valencia con ASCII de colores.
@@ -64,7 +68,7 @@ Dependencias principales para openSUSE:
 ```sh
 sudo zypper install hyprland hyprland-guiutils kitty waybar wofi mako hyprlock \
   grim slurp wl-clipboard spectacle fastfetch btop cava typelib-1_0-Vte-2_91 \
-  libgtk-layer-shell0 python3-gobject python3-cairo
+  libgtk-layer-shell0 python3-gobject python3-cairo file
 ```
 
 También necesita PipeWire/PulseAudio (`pactl`, `parec`, `wpctl`), GTK3, GdkPixbuf,

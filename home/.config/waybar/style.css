@@ -15,9 +15,14 @@ tooltip label { color: #171717; font-family: "JetBrainsMono Nerd Font"; font-siz
 #workspaces button.active { color: #ffffff; background: #171717; border-color: #171717; }
 #workspaces button.urgent { color: #171717; background: #efc7d1; border-color: #171717; }
 #workspaces button:hover { color: #171717; background: #efc7d1; border-color: #171717; }
-#clock { color: #171717; padding: 0 14px; }
+#clock { color: #171717; padding: 0 14px;
+    font-family: "JetBrainsMono Nerd Font", monospace; font-size: 14px;
+    font-feature-settings: "zero=1"; }
 #custom-theme { padding: 0 10px; color: #884258; border-right: 1px solid #b8b8b8; }
 #custom-theme:hover { background: #efc7d1; color: #171717; }
+#custom-clipboard { font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 14px;
+    color: #884258; padding: 0 10px; border-left: 1px dotted #b8b8b8; }
+#custom-clipboard:hover { background: #efc7d1; color: #171717; }
 #pulseaudio, #network, #battery, #tray { padding: 0 10px; border-left: 1px dotted #b8b8b8; }
 #custom-session { padding: 0 10px; margin-left: 4px; border-left: 2px solid #171717; }
 #custom-terminal:hover, #custom-session:hover, #network:hover, #pulseaudio:hover { background: #efc7d1; }

@@ -14,6 +14,7 @@
   "modules-right": [
     "custom/theme",
     "clock",
+    "custom/clipboard",
     "pulseaudio",
     "network",
     "battery",
@@ -52,6 +53,11 @@
     "interval": 1,
     "on-click": "python3 /home/marcos/.local/share/paperbit/calendar_popup.py",
     "tooltip-format": "{:%A, %d de %B de %Y}"
+  },
+  "custom/clipboard": {
+    "format": "\uf328",
+    "tooltip-format": "Portapapeles · Historial y favoritos",
+    "on-click": "python3 /home/marcos/.local/share/paperbit/clipboard_popup.py"
   },
   "pulseaudio": {
     "format": "VOL {volume}%",

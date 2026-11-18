@@ -124,7 +124,12 @@ tooltip label { color: @ink@; font-family: "JetBrainsMono Nerd Font"; font-size:
 #workspaces button.active { color: @paper@; background: @ink@; border-color: @ink@; }
 #workspaces button.urgent { color: @ink@; background: @pink@; border-color: @ink@; }
 #workspaces button:hover { color: @ink@; background: @pink@; border-color: @ink@; }
-#clock { color: @ink@; padding: 0 14px; }
+#clock { color: @ink@; padding: 0 14px;
+    font-family: "JetBrainsMono Nerd Font", monospace; font-size: 14px;
+    font-feature-settings: "zero=1"; }
+#custom-clipboard { font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 14px;
+    color: @rose@; padding: 0 10px; border-left: 1px dotted @line@; }
+#custom-clipboard:hover { background: @pink@; color: @ink@; }
 #pulseaudio, #network, #battery, #tray { padding: 0 10px; border-left: 1px dotted @line@; }
 #custom-session { padding: 0 10px; margin-left: 4px; border-left: 2px solid @ink@; }
 #custom-terminal:hover, #custom-session:hover, #network:hover, #pulseaudio:hover { background: @pink@; }
