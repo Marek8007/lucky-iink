@@ -132,6 +132,21 @@ Los cambios de código o geometría de los paneles requieren reiniciar
 inicial de estilos: **no es el instalador del repositorio** y puede sobrescribir
 personalizaciones visuales realizadas después.
 
+## Pantalla de inicio de sesión
+
+El fondo Paperbit para SDDM se aplica sobre el tema `breeze-openSUSE`. Los archivos
+están en `system/sddm/` y se instalan por separado porque SDDM se ejecuta antes de
+entrar en Hyprland. Si ya hay un `theme.conf.user`, guarda una copia antes.
+
+```sh
+sudo install -m 0644 -t /usr/share/sddm/themes/breeze-openSUSE/ \
+  system/sddm/paperbit-background.svg system/sddm/theme.conf.user
+```
+
+Para volver al fondo de openSUSE, retira el `theme.conf.user` de Paperbit o
+restaura el que tenías. El cambio se verá cuando SDDM vuelva a mostrar el inicio
+de sesión.
+
 ## Restaurar
 
 ```sh

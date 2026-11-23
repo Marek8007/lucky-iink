@@ -1,0 +1,5 @@
+[General]
+type=image
+background=paperbit-background.svg
+showClock=true
+showlogo=hidden
