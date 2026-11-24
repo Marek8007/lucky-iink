@@ -1,0 +1,13 @@
+window { background-color: #ffffff; }
+#window-box { color: #171717; font-family: "JetBrainsMono Nerd Font", monospace; }
+#clock-label { color: #171717; font-family: "Classic Console", monospace; font-size: 72px; }
+#date-label { color: #884258; font-family: "Classic Console", monospace; font-size: 14px; margin-bottom: 24px; }
+#input-field {
+    background: #ffffff;
+    color: #171717;
+    border: 2px solid #171717;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 8px;
+}
+#input-field:focus { border-color: #884258; }

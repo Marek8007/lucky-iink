@@ -132,6 +132,17 @@ Los cambios de código o geometría de los paneles requieren reiniciar
 inicial de estilos: **no es el instalador del repositorio** y puede sobrescribir
 personalizaciones visuales realizadas después.
 
+## Bloqueo animado
+
+Paperbit usa GTKLock 5 y un módulo que dibuja uno de diez patrones de píxeles
+al azar. El atajo Win+L y la opción «Bloquear» del menú vuelven a Hyprlock
+estático si faltan GTKLock o el módulo.
+
+```sh
+sudo zypper install gtklock gtk3-devel gcc pkg-config
+sh system/gtklock/build-module.sh
+```
+
 ## Pantalla de inicio de sesión
 
 El fondo Paperbit para SDDM se aplica sobre el tema `breeze-openSUSE`. Los archivos
@@ -173,7 +184,7 @@ del repositorio; las capturas de pantalla tampoco se incluyen.
 | Win+1–9/0 | Escritorio 1–10 |
 | Win+Mayús+1–9/0 | Mover ventana al escritorio |
 | Impr Pant / tecla de recorte / Win+Mayús+S | Capturar área |
-| Win+L | Bloqueo |
+| Win+L | Bloqueo con un patrón de píxeles aleatorio |
 | Ctrl+Alt+Supr | Menú de sesión |
 | Teclas multimedia | Controlar Spotify |
 
