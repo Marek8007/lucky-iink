@@ -46,7 +46,14 @@
   },
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{name}"
+    "format": "{name}{windows}",
+    "workspace-taskbar": {
+      "enable": true,
+      "orientation": "vertical",
+      "icon-size": 11,
+      "max-icons": 1,
+      "icon-theme": ["hicolor", "breeze"]
+    }
   },
   "clock": {
     "format": "{:%d.%m  /  %H:%M:%S}",

@@ -132,6 +132,14 @@ Los cambios de código o geometría de los paneles requieren reiniciar
 inicial de estilos: **no es el instalador del repositorio** y puede sobrescribir
 personalizaciones visuales realizadas después.
 
+Si instalas Paperbit en otro equipo, compila el módulo de Waybar para que el
+número y el icono de cada escritorio respondan como una sola pestaña.
+Requiere `gtk3-devel`, `gcc` y `pkg-config`.
+
+```sh
+sh system/waybar/build-module.sh
+```
+
 ## Bloqueo animado
 
 Paperbit usa GTKLock 5 y un módulo que dibuja uno de diez patrones de píxeles

@@ -9,12 +9,17 @@ tooltip label { color: #171717; font-family: "JetBrainsMono Nerd Font"; font-siz
     background: #efc7d1; background-image: url("/home/marcos/.local/share/icons/Paperbit/16x16/actions/paperbit-heart.svg");
     background-repeat: no-repeat; background-position: 8px center; background-size: 16px 16px; }
 #custom-terminal { padding: 0 10px; border-right: 1px solid #b8b8b8; }
-#workspaces { padding: 3px 6px; }
-#workspaces button { padding: 0 8px; margin: 0 2px; color: #626262; background: #ffffff;
+#workspaces { padding: 0 6px; }
+#workspaces .workspace-label { font-size: 18px; padding-right: 13px; }
+#workspaces button.taskbar-window, #workspaces button.taskbar-window:hover {
+    margin: 0; padding: 0 0 0 13px; border: 0; background: transparent; box-shadow: none; }
+#workspaces .taskbar-window image { -gtk-icon-transform: translate(0px, -3px); }
+#workspaces > button { padding: 0 4px; margin: 3px 2px; color: #626262; background-color: transparent;
+    background-position: center; background-repeat: no-repeat; background-size: 100% 24px;
     border: 1px solid transparent; box-shadow: none; }
-#workspaces button.active { color: #ffffff; background: #171717; border-color: #171717; }
-#workspaces button.urgent { color: #171717; background: #efc7d1; border-color: #171717; }
-#workspaces button:hover { color: #171717; background: #efc7d1; border-color: #171717; }
+#workspaces > button.active { color: #ffffff; background-image: linear-gradient(#171717, #171717); }
+#workspaces > button.urgent, #workspaces > button:hover {
+    color: #171717; background-image: linear-gradient(#efc7d1, #efc7d1); }
 #clock { color: #171717; padding: 0 14px;
     font-family: "JetBrainsMono Nerd Font", monospace; font-size: 14px;
     font-feature-settings: "zero=1"; }

@@ -23,7 +23,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("python3 /home/marcos/.local/share/paperbit/desktop_widgets.py")
     hl.exec_cmd("python3 /home/marcos/.local/share/paperbit/clipboard_history.py watch")
     hl.exec_cmd("sh /home/marcos/.local/share/paperbit/session.sh")
-    hl.exec_cmd("waybar -c /home/marcos/.config/waybar/config.jsonc -s /home/marcos/.config/waybar/style.css")
+    hl.exec_cmd("sh /home/marcos/.local/share/paperbit/waybar-start.sh")
     hl.exec_cmd("mako")
     hl.exec_cmd("/usr/libexec/polkit-kde-authentication-agent-1")
     -- Terminal disponible desde el primer momento, sin necesitar atajos.

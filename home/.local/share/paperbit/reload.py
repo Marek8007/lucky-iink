@@ -33,7 +33,6 @@ for pid in pids:
 log=Path('/home/marcos/.local/state/paperbit/waybar.log')
 log.parent.mkdir(parents=True,exist_ok=True)
 with log.open('w') as out:
-    subprocess.Popen(['waybar','-c','/home/marcos/.config/waybar/config.jsonc',
-                      '-s','/home/marcos/.config/waybar/style.css'],env=env,
+    subprocess.Popen(['sh','/home/marcos/.local/share/paperbit/waybar-start.sh'],env=env,
                      stdout=out,stderr=out,start_new_session=True)
 print('Hyprland, Kitty, Waybar y Mako recargados. Las aplicaciones Qt abiertas pueden requerir volver a abrirse.')
