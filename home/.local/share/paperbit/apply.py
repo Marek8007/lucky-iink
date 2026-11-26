@@ -136,6 +136,10 @@ tooltip label { color: @ink@; font-family: "JetBrainsMono Nerd Font"; font-size:
     color: @rose@; padding: 0 10px; border-left: 1px dotted @line@; }
 #custom-clipboard:hover { background: @pink@; color: @ink@; }
 #pulseaudio, #network, #battery, #tray { padding: 0 10px; border-left: 1px dotted @line@; }
+#custom-notifications { font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 14px;
+    color: @ink@; padding: 0 10px; border-left: 1px dotted @line@; }
+#custom-notifications.muted { color: @rose@; }
+#custom-notifications:hover { background: @pink@; color: @ink@; }
 #custom-session { padding: 0 10px; margin-left: 4px; border-left: 2px solid @ink@; }
 #custom-terminal:hover, #custom-session:hover, #network:hover, #pulseaudio:hover { background: @pink@; }
 #battery.warning { background: @pink@; color: @ink@; }
@@ -230,6 +234,9 @@ progress-color=over @pink@
 [urgency=critical]
 background-color=@pink@
 default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1
 '''))
 
 write('.config/hypr/hyprlock.conf',render('''# Paperbit · pantalla de bloqueo

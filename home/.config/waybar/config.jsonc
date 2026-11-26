@@ -18,6 +18,7 @@
     "pulseaudio",
     "network",
     "battery",
+    "custom/notifications",
     "tray",
     "custom/session"
   ],
@@ -89,6 +90,15 @@
   "tray": {
     "spacing": 8,
     "icon-size": 16
+  },
+  "custom/notifications": {
+    "exec": "sh /home/marcos/.local/share/paperbit/notifications.sh",
+    "return-type": "json",
+    "format": "{}",
+    "signal": 4,
+    "interval": 5,
+    "exec-on-event": false,
+    "on-click": "sh /home/marcos/.local/share/paperbit/notifications.sh toggle"
   },
   "margin": "8 12 0 12",
   "group/spotify": {

@@ -19,3 +19,6 @@ progress-color=over #efc7d1
 [urgency=critical]
 background-color=#efc7d1
 default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1

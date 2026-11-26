@@ -29,6 +29,10 @@ tooltip label { color: #171717; font-family: "JetBrainsMono Nerd Font"; font-siz
     color: #884258; padding: 0 10px; border-left: 1px dotted #b8b8b8; }
 #custom-clipboard:hover { background: #efc7d1; color: #171717; }
 #pulseaudio, #network, #battery, #tray { padding: 0 10px; border-left: 1px dotted #b8b8b8; }
+#custom-notifications { font-family: "Font Awesome 7 Free"; font-weight: 900; font-size: 14px;
+    color: #171717; padding: 0 10px; border-left: 1px dotted #b8b8b8; }
+#custom-notifications.muted { color: #884258; }
+#custom-notifications:hover { background: #efc7d1; color: #171717; }
 #custom-session { padding: 0 10px; margin-left: 4px; border-left: 2px solid #171717; }
 #custom-terminal:hover, #custom-session:hover, #network:hover, #pulseaudio:hover { background: #efc7d1; }
 #battery.warning { background: #efc7d1; color: #171717; }
